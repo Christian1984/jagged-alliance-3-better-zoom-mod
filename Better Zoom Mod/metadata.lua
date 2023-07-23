@@ -1,0 +1,21 @@
+return PlaceObj('ModDef', {
+	'title', "Better Cam Mod",
+	'description', "Simple test mod that slightly increases the camera's zoom values",
+	'last_changes', "Test",
+	'image', "Images/modicon.png",
+	'id', "BetterCamMod",
+	'author', "ChrisVomRhein",
+	'version_major', 1,
+	'version', 00,
+	'lua_revision', 233360,
+	'saved_with_revision', 336921,
+	'code', {
+		"Code/BetterCamScript.lua",
+	},
+	'has_options', true,
+	'saved', 1688225719,
+	'code_hash', 5896151797841822063,
+	'TagGameplay', true,
+	'screenshot1', "Images/scr1.png",
+	'screenshot2', "Images/scr2.png",
+})
