@@ -1,6 +1,6 @@
 return PlaceObj('ModDef', {
 	'title', "Better Zoom Mod",
-	'description', "Adjust the minimum and maximum zoom levels of the game. Adjust Settings via Options -> Mod Options.\n\nMany thanks to [url=https://steamcommunity.com/id/FailChapi]FAIL! Chapi[/url] and [url=https://www.nexusmods.com/jaggedalliance3/users/101291438]reyback[/url] for inspiration and support.",
+	'description', "Modify the minimum and maximum zoom levels of the game. Adjust Settings via Options -> Mod Options.\n\nMany thanks to [url=https://steamcommunity.com/id/FailChapi]FAIL! Chapi[/url] and [url=https://www.nexusmods.com/jaggedalliance3/users/101291438]reyback[/url] for inspiration and support.",
 	'last_changes', "Initial Release",
 	'image', "Images/modicon.png",
 	'id', "BetterZoomMod",
