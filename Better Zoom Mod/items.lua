@@ -1,10 +1,10 @@
 return {
 PlaceObj('ModItemCode', {
-	'name', "BetterCamScript",
-	'CodeFileName', "Code/BetterCamScript.lua",
+	'name', "BetterZoomModScript",
+	'CodeFileName', "Code/BetterZoomModScript.lua",
 }),
 PlaceObj('ModItemOptionChoice', {
-	'name', "BetterCamMaxZoom",
+	'name', "BetterZoomModCameraTacMaxZoom",
 	'comment', "Vanilla Default = 130, Mod Default = 300",
 	'DisplayName', "Maximum Camera Zoom",
 	'Help', "Defines how far the camera may zoom out (Vanilla Default = 130)",
@@ -21,7 +21,7 @@ PlaceObj('ModItemOptionChoice', {
 	},
 }),
 PlaceObj('ModItemOptionChoice', {
-	'name', "BetterCamMinZoom",
+	'name', "BetterZoomModCameraTacMinZoom",
 	'comment', "Vanilla Default = 65, Mod Default = 70",
 	'DisplayName', "Minimum Camera Zoom",
 	'Help', "Defines how far the camera may zoom in (Vanilla Default = 65)",
@@ -41,7 +41,7 @@ PlaceObj('ModItemOptionChoice', {
 	},
 }),
 -- PlaceObj('ModItemOptionChoice', {
--- 	'name', "BetterCamOverviewZoom",
+-- 	'name', "BetterZoomModCameraTacOverviewZoom",
 -- 	'comment', "Vanilla Default = 220, Mod Default = 600",
 -- 	'DisplayName', "Overview Camera Zoom",
 -- 	'Help', "Defines how far the camera may zoom in (Vanilla Default = 220)",
@@ -60,7 +60,7 @@ PlaceObj('ModItemOptionChoice', {
 -- 	},
 -- }),
 PlaceObj('ModItemOptionChoice', {
-	'name', "BetterCamZoomStepSize",
+	'name', "BetterZoomModCameraTacZoomStep",
 	'comment', "Vanilla Default = 25, Mod Default = 50",
 	'DisplayName', "Zoom Step Size",
 	'Help', "Defines how fast the camera zoom (Vanilla Default = 25)",
