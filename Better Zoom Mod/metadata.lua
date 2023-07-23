@@ -16,6 +16,5 @@ return PlaceObj('ModDef', {
 	'saved', 1688225719,
 	'code_hash', 5896151797841822063,
 	'TagGameplay', true,
-	'screenshot1', "Images/scr1.png",
-	'screenshot2', "Images/scr2.png",
+	-- 'screenshot1', "Images/screenshot1.png",
 })
