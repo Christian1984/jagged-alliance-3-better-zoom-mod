@@ -7,7 +7,7 @@ local function ApplyMod()
 
     options = CurrentModDef.options
     hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoom)
-    hr.CameraTacMinZoom = tonumber(options.BetterZoomModCameraTacCameraTacMinZoom)
+    hr.CameraTacMinZoom = tonumber(options.BetterZoomModCameraTacMinZoom)
     -- hr.CameraTacMaxZoomOverview = tonumber(options.BetterZoomModCameraTacOverviewZoom)
     hr.CameraTacZoomStep = tonumber(options.BetterZoomModCameraTacZoomStep)
 
