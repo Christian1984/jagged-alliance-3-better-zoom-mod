@@ -16,4 +16,7 @@ return PlaceObj('ModDef', {
 	'has_options', true,
 	'saved', 1690217337,
 	'code_hash', -558831421540346189,
+	'screenshot1', "Images/better-zoom-mod-screenshot-1.png",
+	'screenshot2', "Images/better-zoom-mod-screenshot-2.png",
+	'screenshot3', "Images/better-zoom-mod-screenshot-3.png",
 })
