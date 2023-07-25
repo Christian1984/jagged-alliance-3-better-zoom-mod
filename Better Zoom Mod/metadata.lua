@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/BetterZoomMod/",
 	'author', "ChrisVomRhein",
 	'version_major', 1,
-	'version', 0,
+	'version', 1,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {

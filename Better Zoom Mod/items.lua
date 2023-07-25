@@ -3,6 +3,69 @@ PlaceObj('ModItemCode', {
 	'name', "BetterZoomModScript",
 	'CodeFileName', "Code/BetterZoomModScript.lua",
 }),
+PlaceObj('ModItemGameRuleDef', {
+	id = "1",
+	msg_reactions = {
+		PlaceObj('MsgReaction', {
+			Event = "TurnStart",
+			Handler = function (self, team)
+				local options = AccountStorage.ModOptions.BetterZoomMod
+				
+				local team = g_Teams[team]
+				-- print("Turn STARTED -> team.player_team", team.player_team)
+				
+				cameraTac.SetForceMaxZoom(false)
+				
+				if team.player_team == true then
+					-- print("palyer's turn started")
+					hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoom)
+				end
+			end,
+			HandlerCode = function (self, team)
+				local options = AccountStorage.ModOptions.BetterZoomMod
+				
+				local team = g_Teams[team]
+				-- print("Turn STARTED -> team.player_team", team.player_team)
+				
+				cameraTac.SetForceMaxZoom(false)
+				
+				if team.player_team == true then
+					-- print("palyer's turn started")
+					hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoom)
+				end
+			end,
+			param_bindings = false,
+		}),
+		PlaceObj('MsgReaction', {
+			Event = "TurnEnded",
+			Handler = function (self, teamEnded)
+				local options = AccountStorage.ModOptions.BetterZoomMod
+				
+				local team = g_Teams[teamEnded]
+				-- print("Turn ENDED -> team.player_team", team.player_team)
+				
+				if team.player_team == true then
+					-- print("palyer's turn ended")
+					hr.CameraTacMaxZoom = tonumber(130)
+					cameraTac.SetForceMaxZoom(true)
+				end
+			end,
+			HandlerCode = function (self, teamEnded)
+				local options = AccountStorage.ModOptions.BetterZoomMod
+				
+				local team = g_Teams[teamEnded]
+				-- print("Turn ENDED -> team.player_team", team.player_team)
+				
+				if team.player_team == true then
+					-- print("palyer's turn ended")
+					hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoomAI)
+					cameraTac.SetForceMaxZoom(true)
+				end
+			end,
+			param_bindings = false,
+		}),
+	},
+}),
 PlaceObj('ModItemOptionChoice', {
 	'name', "BetterZoomModCameraTacMaxZoom",
 	'comment', "Vanilla Default = 130, Mod Default = 300",
@@ -38,6 +101,23 @@ PlaceObj('ModItemOptionChoice', {
 		"30",
 		"20",
 		"10",
+	},
+}),
+PlaceObj('ModItemOptionChoice', {
+	'name', "BetterZoomModCameraTacMaxZoomAI",
+	'comment', "Vanilla Default = 130, Mod Default = 130",
+	'DisplayName', "Maximum Camera Zoom During AI Turns",
+	'Help', "Defines the camera's zoom level during enemy turns (Vanilla Default = 130)",
+	'DefaultValue', "130",
+	'ChoiceList', {
+		"130",
+		"200",
+		"300",
+		"400",
+		"500",
+		"600",
+		"700",
+		"800",
 	},
 }),
 PlaceObj('ModItemOptionChoice', {
