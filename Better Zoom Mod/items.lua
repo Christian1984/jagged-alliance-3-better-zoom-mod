@@ -19,6 +19,7 @@ PlaceObj('ModItemGameRuleDef', {
 				if team.player_team == true then
 					-- print("palyer's turn started")
 					hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoom)
+					print("START OF PLAYER'S TURN: set max zoom to", hr.CameraTacMaxZoom)
 				end
 			end,
 			HandlerCode = function (self, team)
@@ -32,6 +33,7 @@ PlaceObj('ModItemGameRuleDef', {
 				if team.player_team == true then
 					-- print("palyer's turn started")
 					hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoom)
+					print("START OF PLAYER'S TURN: set max zoom to", hr.CameraTacMaxZoom)
 				end
 			end,
 			param_bindings = false,
@@ -46,8 +48,9 @@ PlaceObj('ModItemGameRuleDef', {
 				
 				if team.player_team == true then
 					-- print("palyer's turn ended")
-					hr.CameraTacMaxZoom = tonumber(130)
+					hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoomAI)
 					cameraTac.SetForceMaxZoom(true)
+					print("END OF PLAYER'S TURN: set max zoom to", hr.CameraTacMaxZoom)
 				end
 			end,
 			HandlerCode = function (self, teamEnded)
@@ -60,6 +63,7 @@ PlaceObj('ModItemGameRuleDef', {
 					-- print("palyer's turn ended")
 					hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoomAI)
 					cameraTac.SetForceMaxZoom(true)
+					print("END OF PLAYER'S TURN: set max zoom to", hr.CameraTacMaxZoom)
 				end
 			end,
 			param_bindings = false,
