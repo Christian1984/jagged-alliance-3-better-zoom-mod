@@ -14,10 +14,10 @@ return PlaceObj('ModDef', {
 		"Code/BetterZoomModScript.lua",
 	},
 	'has_options', true,
-	'saved', 1690488614,
+	'saved', 1690489110,
 	'code_hash', 2340505362631896784,
 	'screenshot1', "Images/better-zoom-mod-screenshot-1.png",
 	'screenshot2', "Images/better-zoom-mod-screenshot-2.png",
 	'screenshot3', "Images/better-zoom-mod-screenshot-3.png",
-	'steam_id', "3010827510",
+	'steam_id', "3009240664",
 })
