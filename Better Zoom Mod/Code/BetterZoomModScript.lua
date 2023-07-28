@@ -11,8 +11,6 @@ local function ApplyMod()
     -- hr.CameraTacMaxZoomOverview = tonumber(options.BetterZoomModCameraTacOverviewZoom)
     hr.CameraTacZoomStep = tonumber(options.BetterZoomModCameraTacZoomStep)
 
-    hr.AaaTest = "TEST"
-
     print("Better Zoom Mod -> Set camera options to: ", options)
 end
 
