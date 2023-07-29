@@ -1,6 +1,10 @@
+## v1.00-04
+
+- further improved zoom behaviour on interrupt actions during enemy turns
+
 ## v1.00-03
 
-- fixed zoom on interupt actions
+- fixed zoom on interrupt actions
 - fixed zoom on combat end
 - improved logging
 

@@ -7,85 +7,95 @@ local logToSnype = false
 -- helper functions
 local function log(msg)
     if logToConsole then
-        print(msg)
+        print("BZM -> ", msg)
     end
     if logToSnype then
-        CombatLog("debug", msg)
+        CombatLog("debug", "BZM -> " .. msg)
     end
 end
 
 local function UnlockCameraTacToMaxZoom()
     cameraTac.SetForceMaxZoom(false)
     hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoom)
-    log("Better Zoom Mod -> Set max zoom to " .. tostring(hr.CameraTacMaxZoom))
+    log("Set max zoom to " .. tostring(hr.CameraTacMaxZoom))
 end
 
 local function LockCameraTacToMaxZoomAI()
     hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoomAI)
     cameraTac.SetForceMaxZoom(true)
-    log("Better Zoom Mod -> Set max zoom to " .. tostring(hr.CameraTacMaxZoom))
+    log("Set max zoom to " .. tostring(hr.CameraTacMaxZoom))
 end
 
 -- handle turns
 OnMsg.TurnStart = function(team)
-    log("Better Zoom Mod -> TurnStart handler")
+    log("TurnStart handler")
 
     local team = g_Teams[team]
-    log("Better Zoom Mod -> Turn STARTED -> team.player_team "..
+    log("Turn STARTED -> team.player_team "..
             tostring(team.player_team))
 
     if team.player_team == true then
         log(
-            "Better Zoom Mod -> Player's turn started, will unlock camera to max zoom")
+            "Player's turn started, will unlock camera to max zoom")
         UnlockCameraTacToMaxZoom()
     end
 end
 
 OnMsg.TurnEnded = function(team)
-    log("Better Zoom Mod -> TurnEnded handler")
+    log("TurnEnded handler")
 
     local team = g_Teams[team]
-    log("Better Zoom Mod -> Turn ENDED: team.player_team " ..
+    log("Turn ENDED: team.player_team " ..
             tostring(team.player_team))
 
     if team.player_team == true then
         log(
-            "Better Zoom Mod -> Player's turn ended, will lock the camera to AI-turn max zoom")
+            "Player's turn ended, will lock the camera to AI-turn max zoom")
         LockCameraTacToMaxZoomAI()
     end
 end
 
 -- handle interrupts
 OnMsg.InterruptAttackStart = function()
-    log(
-        "Better Zoom Mod -> InterruptAttackStart, will lock the camera to AI-turn max zoom")
-    LockCameraTacToMaxZoomAI()
+    log("Received InterruptAttackStart")
+
+    local currentTeam = g_Combat and g_Teams[g_Combat.team_playing]
+    if currentTeam.player_team == true then
+        log(
+            "InterruptAttackStart, will lock the camera to AI-turn max zoom")
+        LockCameraTacToMaxZoomAI()
+    end
 end
 
 OnMsg.InterruptAttackEnd = function()
-    log("Better Zoom Mod -> InterruptAttackEnd, will unlock camera to max zoom")
-    UnlockCameraTacToMaxZoom()
+    log("Received InterruptAttackEnd")
+
+    local currentTeam = g_Combat and g_Teams[g_Combat.team_playing]
+    if currentTeam.player_team == true then
+        log("InterruptAttackEnd, will unlock camera to max zoom")
+        UnlockCameraTacToMaxZoom()
+    end
 end
 
 -- handle conflict end etc.
 OnMsg.ConflictEnd = function()
-    log("Better Zoom Mod -> ConflictEnded, will unlock camera to max zoom")
+    log("ConflictEnded, will unlock camera to max zoom")
     UnlockCameraTacToMaxZoom()
 end
 
 OnMsg.CombatEnd = function()
-    log("Better Zoom Mod -> CombatEnded, will unlock camera to max zoom")
+    log("CombatEnded, will unlock camera to max zoom")
     UnlockCameraTacToMaxZoom()
 end
 
 OnMsg.ExplorationStart = function()
-    log("Better Zoom Mod -> ExplorationStart, will unlock camera to max zoom")
+    log("ExplorationStart, will unlock camera to max zoom")
     UnlockCameraTacToMaxZoom()
 end
 
 -- setup
 local function ApplyMod()
-    -- log("Better Zoom Mod -> ApplyMod() called")
+    -- log("ApplyMod() called")
 
     options = CurrentModDef.options
     hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoom)
@@ -93,7 +103,7 @@ local function ApplyMod()
     -- hr.CameraTacMaxZoomOverview = tonumber(options.BetterZoomModCameraTacOverviewZoom)
     hr.CameraTacZoomStep = tonumber(options.BetterZoomModCameraTacZoomStep)
 
-    log("Better Zoom Mod -> Set camera options to:")
+    log("Set camera options to:")
     log(options)
 end
 
@@ -101,6 +111,6 @@ OnMsg.ApplyModOptions = ApplyMod
 OnMsg.ModsReloaded = ApplyMod
 
 OnMsg.GameStarted = function()
-    log("Better Zoom Mod -> Received GameStarted")
+    log("Received GameStarted")
     ApplySettings()
 end
