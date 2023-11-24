@@ -65,15 +65,7 @@ end
 -- handle interrupts
 OnMsg.InterruptAttackStart = function()
     log("Received InterruptAttackStart")
-
-    local currentTeam = g_Combat and g_Teams[g_Combat.team_playing]
-    if currentTeam.player_team == true then
-        log(
-            "InterruptAttackStart, will lock the camera to AI-turn max zoom")
-        LockCameraTacToMaxZoomAI()
-    else
-        UnlockCameraTacToMaxZoom()
-    end
+    LockCameraTacToMaxZoomAI()
 end
 
 OnMsg.InterruptAttackEnd = function()
