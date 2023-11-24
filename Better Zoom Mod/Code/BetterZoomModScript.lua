@@ -17,11 +17,14 @@ end
 local function UnlockCameraTacToMaxZoom()
     cameraTac.SetForceMaxZoom(false)
     hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoom)
+    local aiZoom = tonumber(options.BetterZoomModCameraTacMaxZoomAI)
+    cameraTac.SetZoom(aiZoom * 10);
     log("Set max zoom to " .. tostring(hr.CameraTacMaxZoom))
 end
 
 local function LockCameraTacToMaxZoomAI()
     hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoomAI)
+    cameraTac.SetZoom(hr.CameraTacMaxZoom * 10);
     cameraTac.SetForceMaxZoom(true)
     log("Set max zoom to " .. tostring(hr.CameraTacMaxZoom))
 end
@@ -38,6 +41,8 @@ OnMsg.TurnStart = function(team)
         log(
             "Player's turn started, will unlock camera to max zoom")
         UnlockCameraTacToMaxZoom()
+    else
+        LockCameraTacToMaxZoomAI()
     end
 end
 
@@ -52,6 +57,8 @@ OnMsg.TurnEnded = function(team)
         log(
             "Player's turn ended, will lock the camera to AI-turn max zoom")
         LockCameraTacToMaxZoomAI()
+    else
+        UnlockCameraTacToMaxZoom()
     end
 end
 
@@ -64,6 +71,8 @@ OnMsg.InterruptAttackStart = function()
         log(
             "InterruptAttackStart, will lock the camera to AI-turn max zoom")
         LockCameraTacToMaxZoomAI()
+    else
+        UnlockCameraTacToMaxZoom()
     end
 end
 
@@ -74,10 +83,22 @@ OnMsg.InterruptAttackEnd = function()
     if currentTeam.player_team == true then
         log("InterruptAttackEnd, will unlock camera to max zoom")
         UnlockCameraTacToMaxZoom()
+    else
+        LockCameraTacToMaxZoomAI()
     end
 end
 
 -- handle conflict end etc.
+OnMsg.ConflictStart = function()
+    log("ConflictEnded, will unlock camera to max zoom")
+    LockCameraTacToMaxZoomAI()
+end
+
+OnMsg.CombatStart = function()
+    log("CombatEnded, will unlock camera to max zoom")
+    LockCameraTacToMaxZoomAI()
+end
+
 OnMsg.ConflictEnd = function()
     log("ConflictEnded, will unlock camera to max zoom")
     UnlockCameraTacToMaxZoom()
@@ -100,7 +121,6 @@ local function ApplyMod()
     options = CurrentModDef.options
     hr.CameraTacMaxZoom = tonumber(options.BetterZoomModCameraTacMaxZoom)
     hr.CameraTacMinZoom = tonumber(options.BetterZoomModCameraTacMinZoom)
-    -- hr.CameraTacMaxZoomOverview = tonumber(options.BetterZoomModCameraTacOverviewZoom)
     hr.CameraTacZoomStep = tonumber(options.BetterZoomModCameraTacZoomStep)
 
     log("Set camera options to:")
